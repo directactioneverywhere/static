@@ -1,0 +1,41 @@
+.vertical-alignment-helper {
+    display:table;
+    height: 100%;
+    width: 100%;
+    pointer-events:none;
+}
+.vertical-align-center {
+    /* To center vertically */
+    display: table-cell;
+    vertical-align: middle;
+    pointer-events:none;
+}
+.modal-content {
+    /* Bootstrap sets the size of the modal in the modal-dialog class, we need to inherit it */
+    width:inherit;
+    height:inherit;
+    margin: 0 auto;
+    pointer-events:all;
+}
+
+.hidden {
+    display: none;
+}
+
+#email-signup-modal {
+    z-index: 100000;
+}
+
+#close-button {
+    font-size: 30px;
+}
+#myModalLabel {
+    font-size: 150%;
+    text-transform: uppercase;
+    text-align: center;
+}
+#first-name-caption,
+#last-name-caption {
+    font-size: 125%;
+}
+

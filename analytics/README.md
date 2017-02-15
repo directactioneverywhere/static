@@ -22,21 +22,15 @@ Use the package like this:
   <head>
     <script>
       // Track errors
-      addEventListener('error', window.__e=function f(e){f.q=f.q||[];f.q.push(e)});</script>
-      // Set up the ga object
-      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};
+      addEventListener('error', window.__e=function f(e){f.q=f.q||[];f.q.push(e)});
     </script>
+
+    <script src="http://static.dxetech.org/analytics/out/analytics.js"></script>
 
     <!-- Download google analytics and our custom autotrack build asynchronously -->
     <script async src='https://www.google-analytics.com/analytics.js'></script>
-    <script async src="https://static.dxetech.org/analytics/out/autotrack.js"></script>
+    <script async src="http://static.dxetech.org/analytics/out/autotrack.js"></script>
 
   </head>
-  <body>
-    ...
-
-    <!-- Run the analytics setup code at end of body. -->
-    <script src="https://static.dxetech.org/analytics/out/analytics.js"></script>
-  </body>
 </html>
 ```

@@ -9,6 +9,7 @@ var pageWhitelist = [
   /^\/blog\/?$/,
   /^\/press\/?$/,
   /^\/theliberationist.*/,
+  /^\/test-email-modal\/?$/,
 ];
 
 var forgetMe = false;

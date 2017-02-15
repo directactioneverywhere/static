@@ -1,10 +1,25 @@
 import {payload} from "./payload";
 
+
+var pageWhitelist = [
+  /^\/$/,
+  /^\/home\/?$/,
+  /^\/take-action\/?$/,
+  /^\/open-rescue\/?$/,
+  /^\/blog\/?$/,
+  /^\/press\/?$/,
+  /^\/theliberationist.*/,
+];
+
 var forgetMe = false;
 
 var setCookie = function() {
-  forgetMe = $('#forget-me-checkbox').prop('checked');
-  document.cookie = "forgetMe=" + forgetMe;
+  var days = 60;
+  var date = new Date();
+  date.setTime(date.getTime()+(days*24*60*60*1000));
+  var expires = "expires="+date.toGMTString();
+
+  document.cookie = "forgetMe=true; " + expires + "; path=/";
 }
 
 var readCookie = function() {
@@ -14,19 +29,57 @@ var readCookie = function() {
       forgetMe = cookies[i].includes('true');
     }
   }
-  if(forgetMe != true) {
-    $('#email-signup-modal').modal().delay(500);
-  }
 }
 
 $(document).ready(function() {
-  $("body").append(payload);
+  // Don't display on cover pages. Cover pages have an "sqs-slide" element.
+  if (!$('.sqs-slide')) {
+    return;
+  }
+
+  // Only display on whitelisted pages.
+  let whitelisted = false;
+  for (let r of pageWhitelist) {
+    if (r.test(window.location.pathname)) {
+      whitelisted = true;
+      break;
+    }
+  }
+  if (!whitelisted) {
+    return;
+  }
+
   readCookie();
+  if(forgetMe !== true) {
 
-  $('#forget-me-checkbox').bind('change', function() {
-    setCookie();
-  });
+    // Display the sign up modal in 7 seconds.
+    setTimeout(function() {
+      ga('send', {
+        hitType: 'event',
+        eventCategory: 'Email Modal',
+        eventAction: 'show',
+      });
 
-  var alertText = '<div class="alert alert-success" role="alert">Thank you for signing up!</div>'
-  $('#alert-box').html(alertText);
+      $("body").append(payload);
+      $('#email-signup-modal').modal();
+
+      $('#email-signup-modal').on("hide.bs.modal", function() {
+        ga('send', {
+          hitType: 'event',
+          eventCategory: 'Email Modal',
+          eventAction: 'hide',
+        });
+        setCookie();
+      });
+
+      $('.modal-submit-button').on('click', function() {
+        ga('send', {
+          hitType: 'event',
+          eventCategory: 'Email Modal',
+          eventAction: 'signup',
+        });
+        setCookie();
+      });
+    }, 7 * 1000);
+  }
 });

@@ -6,7 +6,7 @@ export var payload = `
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal"><span id="close-button" aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-            <h4 class="modal-title" id="myModalLabel">Get updates on our work</h4>
+            <h4 class="modal-title" id="myModalLabel">Sign up to learn about our next open rescue!</h4>
           </div>
           <div class="modal-body">
             <div class="form-wrapper">
@@ -64,17 +64,12 @@ export var payload = `
                     </div>
                   </div>
                   <div class="form-button-wrapper form-button-wrapper--align-center">
-                    <input class="button sqs-system-button sqs-editable-button" id="submit-button" type="submit" value="Submit">
+                    <input class="modal-submit-button button sqs-system-button sqs-editable-button" id="submit-button" type="submit" value="Submit">
                   </div><br>
                   <div class="hidden" id="alert-box"></div>
                   <div class="hidden form-submission-text"><p>Thank you for signing up! You'll now be notified of DxE news and global and local events!</p></div>
                   <div class="hidden form-submission-html" data-submission-html="<img src=&quot;https://d13yacurqjgara.cloudfront.net/users/82092/screenshots/1073359/spinner.gif&quot; style=&quot;margin-left: auto; margin-right: auto; width: 100px; display: block&quot;/>
-                                                                                 <script>window.location.assign('/subscriber-confirmed')</script>"></div>
-                  <div class="modal-footer">
-                    <div class="forget-me">
-                      <input type="checkbox" id="forget-me-checkbox" name=""> Don't show again
-                    </div>
-                  </div>
+                                                                                 <script>window.location.assign('/subscriber-confirmed?action=email-modal')</script>"></div>
                 </form>
               </div>
             </div>

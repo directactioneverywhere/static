@@ -68,7 +68,7 @@ $(document).ready(function () {
   readCookie();
   if (forgetMe !== true) {
 
-    // Display the sign up modal in 7 seconds.
+    // Display the sign up modal in 60 seconds.
     setTimeout(function () {
       ga('send', {
         hitType: 'event',
@@ -96,7 +96,7 @@ $(document).ready(function () {
         });
         setCookie();
       });
-    }, 7 * 1000);
+    }, 60 * 1000);
   }
 });
 

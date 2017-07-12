@@ -32,12 +32,6 @@ var HTML = `
     margin: 0 auto;
   }
 
-  @media only screen and (max-width : 640px) {
-    .fundraiser-inner-wrapper {
-      min-width: initial;
-    }
-  }
-
   .fundraiser-goal {
     font-size: 48px;
     text-align: right;
@@ -92,6 +86,17 @@ var HTML = `
   .fundraiser-goal-overall-desc {
     font-size: 0.5em;
   }
+
+  @media only screen and (max-width : 640px) {
+    .fundraiser-inner-wrapper {
+      min-width: initial;
+    }
+
+    .fundraiser-goal-stat {
+      box-sizing: initial;
+    }
+  }
+
 </style>
 
 <div id="fundraiser-thermometer-wrapper">

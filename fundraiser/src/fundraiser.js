@@ -7,11 +7,11 @@ var HTML = `
     background-repeat: no-repeat;
     background-position: center;
     width: 100%;
-    height: 300px;
-    max-width: 760px;
-    margin: 150px auto 300px;
+    height: 350px;
+    margin: 0px auto;
     visibility: hidden;
     position: relative;
+    font-family: Montserrat;
   }
 
   .fundraiser-outer-inner-wrapper {
@@ -27,7 +27,9 @@ var HTML = `
 
   .fundraiser-inner-wrapper {
     min-width: 700px;
-    max-width: 700px;
+    @media only screen and (max-width : 640px) {
+      min-width: 400px;
+    }
     margin: 0 auto;
   }
 

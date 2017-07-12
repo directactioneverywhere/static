@@ -12,6 +12,7 @@ var HTML = `
     visibility: hidden;
     position: relative;
     font-family: Montserrat;
+    border-radius: 10px;
   }
 
   .fundraiser-outer-inner-wrapper {
@@ -23,20 +24,25 @@ var HTML = `
     display: flex;
     flex-direction: column;
     justify-content: center;
+    border-radius: 10px;
   }
 
   .fundraiser-inner-wrapper {
     min-width: 700px;
-    @media only screen and (max-width : 640px) {
-      min-width: 400px;
-    }
     margin: 0 auto;
+  }
+
+  @media only screen and (max-width : 640px) {
+    .fundraiser-inner-wrapper {
+      min-width: initial;
+    }
   }
 
   .fundraiser-goal {
     font-size: 48px;
     text-align: right;
     color: #FFF;
+    padding: 10px;
     @media only screen and (max-width : 640px) {
       text-align: center;
     }

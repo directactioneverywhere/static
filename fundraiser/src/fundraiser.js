@@ -2,7 +2,7 @@ var HTML = `
 <style>
 
   #fundraiser-thermometer-wrapper {
-    background-image: url('https://static1.squarespace.com/static/515cca87e4b0bca14d767b61/t/595db48437c581ff82e5e815/1499313330968/DSC01781.JPG?format=2500w');
+    background-image: url('https://static.dxetech.org/fundraiser/img/piggies.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -130,6 +130,17 @@ var DONORS_OFFSET = 244;
 
 var FUNDRAISER_TIME_END = '9/30/2017';
 
+function isRecentDonor() {
+  return document.cookie.indexOf('recent_donor=') !== -1;
+}
+
+export function setRecentDonor() {
+  var expires = new Date();
+  expires.setMinutes( expires.getMinutes() + 5 );
+
+  document.cookie = 'recent_donor=1; ' + expires + '; path=/';
+}
+
 export function createThermometer(elementID) {
   let el = document.getElementById(elementID);
   if (!el) {
@@ -146,6 +157,9 @@ export function createThermometer(elementID) {
   function refreshDonorCount() {
     getDonorCount(function(donorCount) {
       donorCount = donorCount - DONORS_OFFSET;
+      if (isRecentDonor()) {
+        donorCount++;
+      }
 
       var donorsEl = document.getElementById('fundraiser-donors');
       donorsEl.innerText = donorCount;

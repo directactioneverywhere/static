@@ -10,3 +10,4 @@ git remote add dokku dokku@dxetech.org:static
 ```
 
 Then, push your changes with `git push dokku master`.
+

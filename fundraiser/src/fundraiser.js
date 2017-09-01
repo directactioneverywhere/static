@@ -180,20 +180,52 @@ export function createThermometer(elementID) {
   setInterval(refreshDonorCount, 1000);
 }
 
+var _donorCount = 0;
+
 function getDonorCount(callback) {
-  var xhr = new XMLHttpRequest();
-  xhr.addEventListener("load", function() {
-    if (xhr.status !== 200) {
+  if (_donorCount) {
+    console.log("ONE");
+    callback(_donorCount);
+    return;
+  }
+
+  var count = 0;
+  function load() {
+    console.log("TWO");
+    if (this.status !== 200) {
+      console.log(this.status);
+      console.log("FIVE")
       return;
     }
 
-    var data = JSON.parse(xhr.responseText);
+    var data = JSON.parse(this.responseText);
     var donorCount = data['result']['donorCount'];
 
-    callback(donorCount);
-  });
-  xhr.open("GET", "https://platform.funraise.io/api/v1/public/form/230?apiKey=472c107b-a760-4be2-b990-81c429da14d5");
-  xhr.send();
+    console.log("THREE", donorCount);
+    _donorCount += donorCount;
+    count++;
+    //if (count >= 5) {
+    if (count >= 4) {
+      console.log("FOUR", _donorCount);
+      callback(_donorCount);
+    }
+  }
+
+  var urls = [
+    "https://platform.funraise.io/api/v1/public/form/230?apiKey=472c107b-a760-4be2-b990-81c429da14d5",
+    "https://platform.funraise.io/api/v1/public/form/1172?apiKey=472c107b-a760-4be2-b990-81c429da14d5",
+    "https://platform.funraise.io/api/v1/public/form/1173?apiKey=472c107b-a760-4be2-b990-81c429da14d5",
+    //"https://platform.funraise.io/api/v1/public/form/1174?apiKey=472c107b-a760-4be2-b990-81c429da14d5",
+    "https://platform.funraise.io/api/v1/public/form/1175?apiKey=472c107b-a760-4be2-b990-81c429da14d5",
+  ];
+
+  for (var i = 0; i < urls.length; i++) {
+    var u = urls[i];
+    var xhr = new XMLHttpRequest();
+    xhr.addEventListener("load", load);
+    xhr.open("GET", u);
+    xhr.send();
+  }
 }
 
 function countDownTimer(dt, id) {

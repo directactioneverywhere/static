@@ -12,11 +12,15 @@ var HTML = `
 }
 #return-to-one-time-donation {
     float: left;
-    font-size: 80%;
+    font-size: 60%;
+    padding: 10px 0;
+    border: none;
+    background: none;
 }
 #go-to-monthly-donation {
     float: right;
-    font-size: 80%;
+    font-size: 60%;
+    padding: 10px;
 }
 </style>
 
@@ -41,8 +45,8 @@ var HTML = `
         </p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" id="return-to-one-time-donation">No, I want to donate once. </button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal" id="go-to-monthly-donation">Yes, I&#39;ll become a monthly donor!</button>
+        <button type="button" class="sqs-editable-button" id="return-to-one-time-donation">No, I want to donate once. </button>
+        <button type="button" class="sqs-editable-button" data-dismiss="modal" id="go-to-monthly-donation">Yes, I&#39;ll become a monthly donor!</button>
       </div>
     </div>
   </div>

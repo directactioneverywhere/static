@@ -184,29 +184,23 @@ var _donorCount = 0;
 
 function getDonorCount(callback) {
   if (_donorCount) {
-    console.log("ONE");
     callback(_donorCount);
     return;
   }
 
   var count = 0;
   function load() {
-    console.log("TWO");
     if (this.status !== 200) {
-      console.log(this.status);
-      console.log("FIVE")
       return;
     }
 
     var data = JSON.parse(this.responseText);
     var donorCount = data['result']['donorCount'];
 
-    console.log("THREE", donorCount);
     _donorCount += donorCount;
     count++;
     //if (count >= 5) {
     if (count >= 4) {
-      console.log("FOUR", _donorCount);
       callback(_donorCount);
     }
   }

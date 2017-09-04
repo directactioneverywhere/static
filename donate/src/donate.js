@@ -62,7 +62,15 @@ logDonateImpression();
 
 var hasAttachedMonthly = false;
 
+// We want to reliably know when the "your information" button is
+// clicked so that we can show the "upgrade to monthly donation"
+// modal. 90% of the time, this will succeed. We can't do this more
+// generally because we don't know if the button click was successful
+// most of the time.
+var initialButtonClick = false;
+
 function monthlyHandler() {
+  initialButtonClick = true;
   // Send checkout and add to cart events.
   ga('ec:addProduct', {
     id: 'DM',
@@ -162,6 +170,7 @@ function monthlySubmitHandler(e) {
 
 var hasAttachedOnce = false;
 function onceHandler() {
+  initialButtonClick = true;
   ga('ec:addProduct', {
     id: 'DO',
     name: "Donate Once",
@@ -193,6 +202,11 @@ $('.dxe-donate-once').on('click', onceHandler);
 
 var hasSubmittedOnceDonation = false;
 function onceSubmitHandler(e) {
+  if (initialButtonClick) {
+    showDonateUpgradeModal();
+    initialButtonClick = false;
+  }
+
   // Sometimes this fires before the button text changes, so wrap it
   // in a setTimeout so that it sees the correct button label.
   setTimeout(() => {
@@ -200,7 +214,6 @@ function onceSubmitHandler(e) {
     var text = $t.text();
     if (text.indexOf('Payment Info') !== -1) {
       // Show the donate upgrade modal.
-      showDonateUpgradeModal();
       hasSubmittedOnceDonation = false;
       ga('ec:addProduct', {
         id: 'DO',

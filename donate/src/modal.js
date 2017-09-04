@@ -17,6 +17,10 @@ var HTML = `
     border: none;
     background: none;
 }
+#return-to-one-time-donation:hover {
+    color: black;
+    decoration: underline;
+}
 #go-to-monthly-donation {
     float: right;
     font-size: 60%;

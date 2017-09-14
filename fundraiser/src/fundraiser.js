@@ -2,7 +2,7 @@ var HTML = `
 <style>
 
   #fundraiser-thermometer-wrapper {
-    background-image: url('https://static.dxetech.org/fundraiser/img/freerangetruth.png');
+    background-image: url('https://static.dxetech.org/fundraiser/img/piggies.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;

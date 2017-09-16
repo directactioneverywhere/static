@@ -188,30 +188,43 @@ function getDonorCount(callback) {
     return;
   }
 
+  var urls = [
+    // Main DxE monthly donor form
+    "https://platform.funraise.io/api/v1/public/form/230?apiKey=472c107b-a760-4be2-b990-81c429da14d5",
+
+    // Old ARC forms
+    "https://platform.funraise.io/api/v1/public/form/1172?apiKey=472c107b-a760-4be2-b990-81c429da14d5",
+    "https://platform.funraise.io/api/v1/public/form/1173?apiKey=472c107b-a760-4be2-b990-81c429da14d5",
+    "https://platform.funraise.io/api/v1/public/form/1174?apiKey=472c107b-a760-4be2-b990-81c429da14d5",
+    "https://platform.funraise.io/api/v1/public/form/1175?apiKey=472c107b-a760-4be2-b990-81c429da14d5",
+
+    // New ARC forms
+    "https://platform.funraise.io/api/v1/public/form/1533?apiKey=aad25e84-eccc-4494-a7c7-4dc41bea2b87",
+    "https://platform.funraise.io/api/v1/public/form/1534?apiKey=aad25e84-eccc-4494-a7c7-4dc41bea2b87",
+    "https://platform.funraise.io/api/v1/public/form/1535?apiKey=aad25e84-eccc-4494-a7c7-4dc41bea2b87",
+    "https://platform.funraise.io/api/v1/public/form/1536?apiKey=aad25e84-eccc-4494-a7c7-4dc41bea2b87",
+  ];
+
   var count = 0;
   function load() {
+    count++;
     if (this.status !== 200) {
       return;
     }
 
-    var data = JSON.parse(this.responseText);
-    var donorCount = data['result']['donorCount'];
+    try {
+      var data = JSON.parse(this.responseText);
+      var donorCount = data['result']['donorCount'];
 
-    _donorCount += donorCount;
-    count++;
-    //if (count >= 5) {
-    if (count >= 4) {
+      _donorCount += donorCount;
+    } catch(e) {
+      console.log("Could not parse funraise data: " + e);
+    }
+
+    if (count >= urls.length) {
       callback(_donorCount);
     }
   }
-
-  var urls = [
-    "https://platform.funraise.io/api/v1/public/form/230?apiKey=472c107b-a760-4be2-b990-81c429da14d5",
-    "https://platform.funraise.io/api/v1/public/form/1172?apiKey=472c107b-a760-4be2-b990-81c429da14d5",
-    "https://platform.funraise.io/api/v1/public/form/1173?apiKey=472c107b-a760-4be2-b990-81c429da14d5",
-    //"https://platform.funraise.io/api/v1/public/form/1174?apiKey=472c107b-a760-4be2-b990-81c429da14d5",
-    "https://platform.funraise.io/api/v1/public/form/1175?apiKey=472c107b-a760-4be2-b990-81c429da14d5",
-  ];
 
   for (var i = 0; i < urls.length; i++) {
     var u = urls[i];

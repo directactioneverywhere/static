@@ -70,7 +70,7 @@ export var payload = `
                   </div><br>
                   <div class="hidden" id="alert-box"></div>
                   <div class="hidden form-submission-text"><p>Thank you for signing up! You'll now be notified of DxE news and global and local events!</p></div>
-                  <div class="hidden form-submission-html" data-submission-html="<script>var e = $('#select-yui_3_17_2_1_1481686238867_118639 select'); var strChapter = e[0].options[e[0].selectedIndex].value; if (strChapter == "San Francisco Bay Area") {window.location.assign('/subscriber-confirmed?action=email-modal?list=sfbay')} else {window.location.assign('/subscriber-confirmed?action=email-modal')}</script>"></div>
+                  <div class="hidden form-submission-html" data-submission-html="<script>var e = $('#select-yui_3_17_2_1_1481686238867_118639 select'); var strChapter = e[0].options[e[0].selectedIndex].value; if (strChapter == 'San Francisco Bay Area') {window.location.assign('/subscriber-confirmed?action=email-modal?list=sfbay');} else {window.location.assign('/subscriber-confirmed?action=email-modal');}</script>"></div>
                 </form>
               </div>
             </div>

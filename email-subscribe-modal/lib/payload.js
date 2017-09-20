@@ -33,6 +33,7 @@ export var payload = `
                       <select name="select-yui_3_17_2_1_1481686238867_118639-field">
                         <option value="None">None</option>
                         <option value="Bakersfield">Bakersfield</option>
+                        <option value="Berlin">Berlin</option>
                         <option value="Bloomington">Bloomington</option>
                         <option value="Chicago">Chicago</option>
                         <option value="Cleveland">Cleveland</option>
@@ -54,6 +55,7 @@ export var payload = `
                         <option value="Orange County">Orange County</option>
                         <option value="Philadelphia">Philadelphia</option>
                         <option value="Riverside">Riverside</option>
+                        <option value="Salt Lake City">Salt Lake City</option>
                         <option value="San Francisco Bay Area">San Francisco Bay Area</option>
                         <option value="San Luis Obispo">San Luis Obispo</option>
                         <option value="Tallahassee">Tallahassee</option>
@@ -69,7 +71,14 @@ export var payload = `
                   <div class="hidden" id="alert-box"></div>
                   <div class="hidden form-submission-text"><p>Thank you for signing up! You'll now be notified of DxE news and global and local events!</p></div>
                   <div class="hidden form-submission-html" data-submission-html="<img src=&quot;https://d13yacurqjgara.cloudfront.net/users/82092/screenshots/1073359/spinner.gif&quot; style=&quot;margin-left: auto; margin-right: auto; width: 100px; display: block&quot;/>
-                                                                                 <script>window.location.assign('/subscriber-confirmed?action=email-modal')</script>"></div>
+                    <script>
+                      var e = $('#select-yui_3_17_2_1_1481686238867_118639 select');
+                      var strChapter = e[0].options[e[0].selectedIndex].value;
+                      if (strChapter == "San Francisco Bay Area") {window.location.assign('/subscriber-confirmed?list=sfbay')}
+                      else {window.location.assign('/subscriber-confirmed')
+                      }
+                    </script>">
+                  </div>
                 </form>
               </div>
             </div>

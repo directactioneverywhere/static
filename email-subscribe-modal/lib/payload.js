@@ -74,8 +74,8 @@ export var payload = `
                     <script>
                       var e = $('#select-yui_3_17_2_1_1481686238867_118639 select');
                       var strChapter = e[0].options[e[0].selectedIndex].value;
-                      if (strChapter == "San Francisco Bay Area") {window.location.assign('/subscriber-confirmed?list=sfbay')}
-                      else {window.location.assign('/subscriber-confirmed')
+                      if (strChapter == "San Francisco Bay Area") {window.location.assign('/subscriber-confirmed?action=email-modal?list=sfbay')}
+                      else {window.location.assign('/subscriber-confirmed?action=email-modal')
                       }
                     </script>">
                   </div>

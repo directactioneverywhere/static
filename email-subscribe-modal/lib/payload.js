@@ -13,7 +13,7 @@ export var payload = `
               <div class="form-inner-wrapper">
                 <form autocomplete="on" action="" method="POST" onsubmit="return (function(form) { Y.use
                                                                           ('squarespace-form-submit', 'node',
-                                                                          function (Y) { (new Y.Squarespace.FormSubmit({ formNode: Y.Node(form) })).submit('5850c5e044024318a770abf8', '', '') }); return false;})(this)">
+                                                                          function (Y) { (new Y.Squarespace.FormSubmit({ formNode: Y.Node(form) })).submit('56523539e4b06cc32bb6a952', '', '') }); return false;})(this)">
                   <div class="field-list clear">
                     <fieldset id="name-yui_3_17_2_1_1481686238867_115413" class="form-item fields name required">
                       <div class="title">Name <span class="required">*</span></div>

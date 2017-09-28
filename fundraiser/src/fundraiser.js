@@ -73,6 +73,10 @@ var HTML = `
     box-sizing: border-box;
   }
 
+  .fundraiser-goal-stat--time-left {
+    width: auto;
+  }
+
   .fundraiser-goal-number, .fundraiser-goal-label {
     display: block;
     box-sizing: border-box;
@@ -115,9 +119,9 @@ var HTML = `
         <span id="fundraiser-donors" class="fundraiser-goal-number"></span>
         <span class="fundraiser-goal-label">Donors</span>
       </div>
-      <div class="fundraiser-goal-stat">
+      <div class="fundraiser-goal-stat fundraiser-goal-stat--time-left">
         <span id="fundraiser-time-left" class="fundraiser-goal-number"></span>
-        <span class="fundraiser-goal-label">Days to Go</span>
+        <span class="fundraiser-goal-label">Time left</span>
       </div>
     </div>
   </div>
@@ -128,7 +132,7 @@ var DONORS_GOAL = 750;
 
 var DONORS_OFFSET = 244;
 
-var FUNDRAISER_TIME_END = '9/30/2017';
+var FUNDRAISER_TIME_END = 'Sep 30 2017 23:59:00 PDT';
 
 function isRecentDonor() {
   return document.cookie.indexOf('recent_donor=') !== -1;
@@ -207,6 +211,8 @@ function getDonorCount(callback) {
 
   var count = 0;
   function load() {
+    console.log(this.responseText);
+
     count++;
     if (this.status !== 200) {
       return;
@@ -250,7 +256,7 @@ function countDownTimer(dt, id) {
     if (distance < 0) {
       if (timer) {
         clearInterval(timer);
-        document.getElementById(id).innerText = '0';
+        document.getElementById(id).innerText = '0 days';
       }
       return;
     }
@@ -259,7 +265,11 @@ function countDownTimer(dt, id) {
     var minutes = Math.floor((distance % _hour) / _minute);
     var seconds = Math.floor((distance % _minute) / _second);
 
-    document.getElementById(id).innerText = days /*+ ' days'*/;
+    var msg = '';
+    hours += days * 24;
+    msg += hours + ' hours, ' + minutes + ' minutes, and<br>' + seconds + ' seconds';
+
+    document.getElementById(id).innerHTML = msg;
   }
 
   showRemaining();

@@ -267,9 +267,9 @@ function countDownTimer(dt, id) {
 
     var msg = '';
     hours += days * 24;
-    msg += hours + ' hours, ' + minutes + ' minutes, and ' + seconds + ' seconds';
+    msg += hours + ' hours, ' + minutes + ' minutes, and<br>' + seconds + ' seconds';
 
-    document.getElementById(id).innerText = msg;
+    document.getElementById(id).innerHTML = msg;
   }
 
   showRemaining();

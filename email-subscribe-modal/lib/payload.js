@@ -56,6 +56,7 @@ export var payload = `
                         <option value="Philadelphia">Philadelphia</option>
                         <option value="Riverside">Riverside</option>
                         <option value="Salt Lake City">Salt Lake City</option>
+                        <option value="San Diego">San Diego</option>
                         <option value="San Francisco Bay Area">San Francisco Bay Area</option>
                         <option value="San Luis Obispo">San Luis Obispo</option>
                         <option value="Tallahassee">Tallahassee</option>

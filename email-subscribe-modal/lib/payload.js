@@ -54,6 +54,7 @@ export var payload = `
                         <option value="New York City">New York City</option>
                         <option value="Orange County">Orange County</option>
                         <option value="Philadelphia">Philadelphia</option>
+                        <option value="Philadelphia">Portland</option>
                         <option value="Riverside">Riverside</option>
                         <option value="Salt Lake City">Salt Lake City</option>
                         <option value="San Diego">San Diego</option>

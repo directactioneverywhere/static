@@ -1,6 +1,7 @@
 import {
   showDonateUpgradeModal,
   donateUpgradeModalState,
+  modalEnabled,
 } from './modal';
 
 var ga = window.ga || function() {};
@@ -202,7 +203,7 @@ $('.dxe-donate-once').on('click', onceHandler);
 
 var hasSubmittedOnceDonation = false;
 function onceSubmitHandler(e) {
-  if (initialButtonClick) {
+  if (modalEnabled && initialButtonClick) {
     showDonateUpgradeModal();
     initialButtonClick = false;
   }

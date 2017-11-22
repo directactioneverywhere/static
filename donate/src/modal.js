@@ -61,6 +61,9 @@ export const donateUpgradeModalState = {
   monthlySelected: false,
 };
 
+export const modalEnabled = false;
+
+
 function init() {
   $('body').append(HTML);
 
@@ -92,7 +95,9 @@ function init() {
     ga('send', 'event', 'Internal Promotions', 'click', 'Upgrade to Monthly');
   });
 }
-init();
+if (modalEnabled) {
+  init();
+}
 
 let donateUpgradeModalShown = false;
 

@@ -1,0 +1,5 @@
+#root {
+    position: relative;
+    width: 90vw;
+    left: calc(-50vw + 60%);
+}

@@ -1,5 +1,5 @@
 let developmentServer = "http://localhost:3333";
-let productionServer = "http://mobile.dxetech.org";
+let productionServer = "https://mobile.dxetech.org";
 
 let server = (process.env.NODE_ENV === 'development') ? developmentServer : productionServer;
 

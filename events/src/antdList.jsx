@@ -92,7 +92,6 @@ class EventItem extends React.Component {
 class AntdList extends React.Component {
     constructor(props) {
         super(props);
-        console.log("Inside the constructor of component AntList: ", this.props)
         this.listData = []
         this.state = {
             likeCount: 0,
@@ -101,13 +100,9 @@ class AntdList extends React.Component {
         }
     }
     componentWillReceiveProps(newProps) {
-        console.log("inside the component will receive props of AntdList", newProps)
-        console.log("de-structuring the received object", newProps.eventList)
         this.listData = []
         Object.keys(newProps.eventList).map((index) => {
-            console.log("The key and index are: ", newProps.eventList[index])
             let eventBe = newProps.eventList[index]
-            console.log("The eventBe is", eventBe)
             this.listData.unshift({
                 title: eventBe.name,
                 startTime: eventBe.start_time,

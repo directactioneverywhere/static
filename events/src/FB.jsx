@@ -14,14 +14,12 @@ class FB extends React.Component {
         this.showEvents = this.showEvents.bind(this)
     }
     showEvents(value) {
-        console.log("inside the show events", value)
         getEvents()
             .then((items) => {
                 this.setState({ items: {...items}, hostedBy: value.name })
             })
     }
     componentDidMount() {
-        console.log("Inside the component did mount of FB")
         getEvents() // Load the default DxE page events
             .then((items) => {
                 console.log("the type of value is: ", typeof items, items)
@@ -29,7 +27,6 @@ class FB extends React.Component {
         })
     }
     render() {
-        console.log("Inside the render function of the component FB");
         return (
             <div>
                 <SelectEvent onSelect={this.showEvents}/>

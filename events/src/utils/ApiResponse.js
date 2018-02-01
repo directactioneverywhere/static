@@ -1,4 +1,4 @@
-let developmentServer = "http://localhost:3000";
+let developmentServer = "http://localhost:3333";
 let productionServer = "http://mobile.dxetech.org";
 
 let server = (process.env.NODE_ENV === 'development') ? developmentServer : productionServer;
@@ -11,6 +11,6 @@ export function getEvents() {
       return data.data
     })
     .catch(function (error) {
-      console.log(JSON.stringify(error))
+      console.error("Could not get events", error);
     })
 }

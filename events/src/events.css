@@ -107,3 +107,7 @@ div[class^="item"], div[class*=" item"] {
     color: rgba(0, 0, 0, 0.85);
     text-decoration: none !important;
 }
+
+a.rsvp-link {
+    color: red;
+}

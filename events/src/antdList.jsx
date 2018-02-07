@@ -78,7 +78,7 @@ class EventItem extends React.Component {
             actions={actions}
           >
 
-            <h3 className="eventTitle"><a target="_blank" href={item.href}>{item.title}</a></h3>
+            <h3 className="eventTitle"><a target="_blank" href={item.href}>{item.title}</a> - <a className="rsvp-link" target="_blank" href={item.href}>RSVP on Facebook</a></h3>
 
             {this.state.showMore ? <p className="read-more-target">{item.description}</p> : <p className="read-more-target">{item.lessText}</p>}
             <button className="showMoreLessBtn" onClick={() => { this.setState({ showMore: !this.state.showMore }) }} >{this.state.showMore ? 'Show Less' : 'Show More'}</button>
@@ -127,8 +127,8 @@ class AntdList extends React.Component {
             dataSource={this.listData}
             renderItem={item => (
                 <EventItem
-                item={item}
-                     />
+                  item={item}
+                />
               )}
         />
       </div>

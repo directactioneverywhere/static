@@ -53,8 +53,6 @@ class EventItem extends React.Component {
 
     let actions = [
       <IconText type="check-circle-o" text={item.attendingCount + " attending"}/>,
-      <IconText type="like-o" text={item.interest_count + " interested"}/>,
-
     ];
 
     let location = this.findLocation(item.place);
@@ -88,7 +86,6 @@ class EventItem extends React.Component {
               </h2>
 
               <p className="read-more-target">{item.lessText}</p>
-              <a target="_blank" href={item.href}>More Details</a>
             </List.Item>
           </Col>
         </Row>

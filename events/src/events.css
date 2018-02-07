@@ -74,6 +74,7 @@ div[class^="item"], div[class*=" item"] {
 .read-more-target {
     transition: .25s ease;
     white-space: pre-line;
+    font-size: 16px;
 }
 
 .showMoreLessBtn, .showMoreLessBtn:focus, .showMoreLessBtn:active {
@@ -121,7 +122,7 @@ button.attendBtn {
 }
 
 .eventItem {
-    margin: 30px 0;
+    margin: 45px 0;
 }
 
 .eventDescription {

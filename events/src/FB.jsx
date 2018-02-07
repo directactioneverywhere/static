@@ -27,6 +27,7 @@ class FB extends React.Component {
   render() {
     return (
       <div>
+        <h1 className="pageTitle">SF Bay Events</h1>
         <AntdList eventList={this.state.items} hostedBy={this.state.hostedBy}/>
       </div>
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Row, Col, List, Icon, Tooltip } from 'antd';
+import { Row, Col, List, Icon, Tooltip, Button } from 'antd';
 import 'antd/dist/antd.css';
 import moment from 'moment';
 import _ from 'lodash';
@@ -52,39 +52,47 @@ class EventItem extends React.Component {
     let item = this.props.item;
 
     let actions = [
-      <IconText type="calendar" text={
-        moment(item.startTime).format("dddd, MMMM D") + " at " +
-                                      moment(item.startTime).format("h:mm A") + " - " +
-                                      moment(item.endTime).format("h:mm A")
-                                     }/>,
-      <IconText type="like-o" text={item.interest_count} toolTipText={"Interested Count"}/>,
-      <IconText type="check-circle-o" text={item.attendingCount} toolTipText={"Attending Count"}/>,
+      <IconText type="check-circle-o" text={item.attendingCount + " attending"}/>,
+      <IconText type="like-o" text={item.interest_count + " interested"}/>,
+
     ];
 
     let location = this.findLocation(item.place);
     if (location) {
-      actions.push(<IconText type="environment-o" text={location} toolTipText={"Location"}/>);
+      actions.push(<IconText type="environment-o" text={location} />);
     }
 
     return (
-      <Row gutter={8}>
-        <Col span={4}>
-          <a target="_blank" href={item.href}><img className="eventImg" width={272} alt="logo" src={item.avatar} /></a>
-        </Col>
-        <Col span={20}>
-          <List.Item
-            key={item.title}
-            className="eventDescriptionInAnt"
-            actions={actions}
-          >
+      <div className="eventItem">
+        <Row gutter={8}>
+          <Col span={6}>
+            <div className="leftGutter">
+              <a target="_blank" href={item.href}><img className="eventImg" width={272} alt="logo" src={item.avatar} /></a>
+              <a target="_blank" href={item.href}><Button className="attendBtn" type="primary">Attend</Button></a>
+            </div>
+          </Col>
+          <Col span={18}>
+            <List.Item
+              key={item.title}
+              className="eventDescription"
+              actions={actions}
+            >
+              <div>
+                {moment(item.startTime).format("dddd, MMMM D") + " at " +
+                 moment(item.startTime).format("h:mm A") + " - " +
+                 moment(item.endTime).format("h:mm A")}
+              </div>
 
-            <h3 className="eventTitle"><a target="_blank" href={item.href}>{item.title}</a> - <a className="rsvp-link" target="_blank" href={item.href}>RSVP on Facebook</a></h3>
+              <h2 className="eventTitle">
+                <a target="_blank" href={item.href}>{item.title}</a>
+              </h2>
 
-            {this.state.showMore ? <p className="read-more-target">{item.description}</p> : <p className="read-more-target">{item.lessText}</p>}
-            <button className="showMoreLessBtn" onClick={() => { this.setState({ showMore: !this.state.showMore }) }} >{this.state.showMore ? 'Show Less' : 'Show More'}</button>
-          </List.Item>
-        </Col>
-      </Row>
+              <p className="read-more-target">{item.lessText}</p>
+              <a target="_blank" href={item.href}>More Details</a>
+            </List.Item>
+          </Col>
+        </Row>
+      </div>
     );
   }
 }

@@ -1,5 +1,6 @@
 #root {
     position: relative;
-    width: 90vw;
-    left: calc(-50vw + 60%);
+    max-width: 960px;
+    width: 960px;
+    left: calc(-17%);
 }

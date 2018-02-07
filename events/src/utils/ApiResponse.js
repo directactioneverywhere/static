@@ -12,5 +12,5 @@ export function getEvents() {
     })
     .catch(function (error) {
       console.error("Could not get events", error);
-    })
+    });
 }

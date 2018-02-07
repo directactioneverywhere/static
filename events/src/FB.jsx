@@ -1,41 +1,38 @@
 import React from 'react'
 import { getEvents }  from './utils/ApiResponse'
-import SelectEvent from "./SelectEvent";
 import './events.css';
 import AntdList from './antdList';
 
 class FB extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            items : {},
-            hostedBy: 'Berkeley Animal Rights Center'
-        }
-        this.showEvents = this.showEvents.bind(this)
+  constructor(props) {
+    super(props);
+    this.state = {
+      items : {},
+      hostedBy: '',
     }
-    showEvents(value) {
-        getEvents()
-            .then((items) => {
-                this.setState({ items: {...items}, hostedBy: value.name })
-            })
-    }
-    componentDidMount() {
-        getEvents() // Load the default DxE page events
-            .then((items) => {
-                console.log("the type of value is: ", typeof items, items)
-                this.setState({ items: {...items} })
-        })
-    }
-    render() {
-        return (
-            <div>
-                <SelectEvent onSelect={this.showEvents}/>
-                <AntdList eventList={this.state.items} hostedBy={this.state.hostedBy}/>
-            </div>
+    this.showEvents = this.showEvents.bind(this)
+  }
+  showEvents(value) {
+    getEvents()
+      .then((items) => {
+        this.setState({ items: {...items}, hostedBy: value.name })
+      })
+  }
+  componentDidMount() {
+    getEvents() // Load the default DxE page events
+      .then((items) => {
+        this.setState({ items: {...items} })
+      })
+  }
+  render() {
+    return (
+      <div>
+        <AntdList eventList={this.state.items} hostedBy={this.state.hostedBy}/>
+      </div>
 
-        )
+    )
 
-    }
+  }
 }
 
 export default FB

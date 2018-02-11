@@ -1,6 +1,7 @@
 import React from 'react';
 import { Row, Col, List, Icon, Tooltip, Button } from 'antd';
 import 'antd/dist/antd.css';
+import { EventLink } from './utils/EventLink';
 import moment from 'moment';
 import _ from 'lodash';
 
@@ -65,8 +66,8 @@ class EventItem extends React.Component {
         <Row gutter={8}>
           <Col span={6}>
             <div className="leftGutter">
-              <a target="_blank" href={item.href}><img className="eventImg" width={272} alt="logo" src={item.avatar} /></a>
-              <a target="_blank" href={item.href}><Button className="attendBtn" type="primary">Attend</Button></a>
+              <EventLink analytics-type="picture" href={item.href}><img className="eventImg" width={272} alt="logo" src={item.avatar} /></EventLink>
+              <EventLink analytics-type="attend-button" href={item.href}><Button className="attendBtn" type="primary">Attend</Button></EventLink>
             </div>
           </Col>
           <Col span={18}>
@@ -82,7 +83,7 @@ class EventItem extends React.Component {
               </div>
 
               <h2 className="eventTitle">
-                <a target="_blank" href={item.href}>{item.title}</a>
+                <EventLink analytics-type="title" href={item.href}>{item.title}</EventLink>
               </h2>
 
               <p className="read-more-target">{item.lessText}</p>
@@ -116,7 +117,7 @@ class AntdList extends React.Component {
         description: eventBe.description,
         lessText: lessTextSummary(eventBe.description),
         interest_count: eventBe.interested_count,
-        href: `http://www.facebool.com/${eventBe.id}`,
+        href: `http://www.facebook.com/${eventBe.id}`,
         avatar: eventBe.cover.source,
         host: `Hosted by ${newProps["hostedBy"]}`,
         place: eventBe.place

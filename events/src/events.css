@@ -1,112 +1,18 @@
-.container {
-    display: grid;
-    grid-gap: 70px;
-    list-style-type: none;
-}
-
-.events {
-    display: grid;
-    grid-gap: 10px;
-    grid-template-rows: auto;
-    grid-template-columns: repeat(5, 1fr);
-    cursor: pointer;
-    list-style-type: none; /*to remove bullets in list*/
-}
-
-div[class^="item"], div[class*=" item"] {
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr  3fr 2fr;
-    grid-template-rows: 150px;
-    grid-template-areas: "date emptySpace picture desc count"
-}
-
-.eventTiming {
-    display: grid;
-    grid-area: date;
-    grid-template-areas:
-            "emptyrow"
-            "eventrowForMonth"
-            "eventrowForDate"
-            "eventrowForDay"
-            "eventBorder"
-}
-
-.eventEmptyRow {
-    grid-area: emptyrow;
-}
-
-.eventMonth {
-    grid-area: eventrowForMonth;
-    text-align: center;
-}
-
-.eventDate {
-    grid-area: eventrowForDate;
-    text-align: center;
-}
-
-.eventDay {
-    grid-area: eventrowForDay;
-    text-align: center;
-}
-
-.eventBorder {
-    border-bottom: orange solid;
-    border-bottom-width: 10px;
-}
-
-.eventEmptySpace {
-    grid-area: emptySpace;
-}
-
-.eventPicture {
-    grid-area: picture;
-}
-
 .eventDescription {
-    grid-area: desc;
-}
-
-.eventCount {
-    grid-area: count;
-}
-
-.read-more-target {
-    transition: .25s ease;
     white-space: pre-line;
     font-size: 16px;
 }
 
-.showMoreLessBtn, .showMoreLessBtn:focus, .showMoreLessBtn:active {
-    /* Remove all decorations to look like normal text */
-    background: none;
-    border: none;
-    display: inline;
-    font: inherit;
-    margin: 0;
-    padding: 0;
-    outline: none;
-    outline-offset: 0;
-
-    /* Additional styles to look like a link */
-    color: #4ea3e4;
-    cursor: pointer;
-    text-decoration: underline;
-}
-
-.showMoreLessBtn:hover {
-    text-decoration: none;
-}
-
 .eventImg {
-    width: 100%;
-    margin-top: 20px;
     border-radius: 3px;
 }
 
 .leftGutter {
     padding-right: 5px;
-    width: 100%;
+}
+
+.eventTitle {
+    margin-top: 0;
 }
 
 .eventTitle>a {
@@ -115,18 +21,27 @@ div[class^="item"], div[class*=" item"] {
     text-decoration: none !important;
 }
 
-button.attendBtn {
+.attendBtn {
     width: 100%;
     margin-top: 10px;
     height: 40px;
+
+    background-color: #1890ff;
+    border-color: #1890ff;
+}
+
+.attendBtn:hover, .attendBtn:focus {
+    background-color: #40a9ff !important;
+    border-color: #40a9ff !important;
+}
+
+.attendBtn:active {
+    background-color: #096dd9 !important;
+    border-color: #096dd9 !important;
 }
 
 .eventItem {
     margin: 45px 0;
-}
-
-.eventDescription {
-    padding-left: 20px;
 }
 
 .pageTitle {

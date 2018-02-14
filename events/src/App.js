@@ -1,37 +1,37 @@
 import React from 'react'
 import { getEvents, logHit }  from './utils/api'
-import './events.css';
-import AntdList from './antdList';
+import './thirdparty/bootstrap/css/bootstrap.min.css';
+import EventList from './EventList';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      items : {},
-      hostedBy: '',
+      isLoading: true,
+      items: [],
     }
-    this.showEvents = this.showEvents.bind(this)
   }
-  showEvents(value) {
-    getEvents()
-      .then((items) => {
-        this.setState({ items: {...items}, hostedBy: value.name })
-      })
-  }
+
   componentDidMount() {
     getEvents() // Load the default DxE page events
       .then((items) => {
-        this.setState({ items: {...items} })
+        this.setState({
+          items: items,
+          isLoading: false,
+        })
       })
 
     // Log a hit to indicate that the component has loaded.
     logHit();
   }
+
   render() {
     return (
-      <div>
+      <div className="container">
         <h1 className="pageTitle">SF Bay Events</h1>
-        <AntdList eventList={this.state.items} hostedBy={this.state.hostedBy}/>
+        <EventList
+          eventList={this.state.items}
+          isLoading={this.state.isLoading} />
       </div>
 
     )

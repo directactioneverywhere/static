@@ -1,3 +1,10 @@
+@media (max-width: 991px) {
+    .eventDate {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+}
+
 .eventItem {
     color: #5c5151;
 }

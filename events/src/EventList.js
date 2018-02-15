@@ -7,17 +7,28 @@ import _ from 'lodash';
 
 import './events.css';
 
+// Picked arbitrarily by looking at summaries that were too short.
+var minimumSummaryLength = 80;
 
 // lessTextSummary takes an event description and returns a shorter
 // description that's easy to scan.
 function lessTextSummary(desc) {
   // Trim desc it can't start with a newline.
-  desc = desc.trim();
-  let newlineIndex = desc.indexOf('\n');
-  if (newlineIndex === -1) {
-    return desc;
+  var lines = desc.trim().split('\n');
+
+  var text = '';
+  for (var i = 0; i < lines.length; i++) {
+    if (i !== 0) {
+      text += '\n\n';
+    }
+
+    text += lines[i];
+    if (text.length >= minimumSummaryLength) {
+      return text;
+    }
   }
-  return desc.slice(0, newlineIndex);
+
+  return text;
 }
 
 class EventItem extends React.Component {

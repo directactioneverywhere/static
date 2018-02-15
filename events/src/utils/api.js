@@ -1,3 +1,6 @@
+import _ from 'lodash';
+import moment from 'moment';
+
 let developmentServer = "http://localhost:3333";
 let productionServer = "https://mobile.dxetech.org";
 
@@ -8,7 +11,13 @@ export function getEvents() {
   return fetch(dxeURL)
     .then((resp) => resp.json())
     .then(function (data) {
-      return data.data
+      // Sort by date.
+      let fbData = data.data;
+      fbData = _.sortBy(fbData, function(o) {
+        return new moment(o.start_date);
+      }).reverse();
+
+      return fbData;
     })
     .catch(function (error) {
       console.error("Could not get events", error);

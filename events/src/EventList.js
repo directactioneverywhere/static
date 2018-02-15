@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Row, Col, Button } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 import { EventLink } from './utils/EventLink';
 import moment from 'moment';
 import _ from 'lodash';
@@ -32,9 +32,6 @@ function lessTextSummary(desc) {
 }
 
 class EventItem extends React.Component {
-  constructor(props) {
-    super(props);
-  }
   findLocation(place) {
     let street = _.get(place, 'location.street', undefined)
     let city = _.get(place, 'location.city', undefined)
@@ -95,10 +92,6 @@ class EventItem extends React.Component {
 }
 
 class EventList extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     if (this.props.isLoading) {
       return null;

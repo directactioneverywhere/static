@@ -36,6 +36,7 @@ export class EventLink extends React.Component {
 
   render() {
     return (
+      // eslint-disable-next-line
       <a {...this.aProps} onClick={this.onClickHandler} />
     );
   }

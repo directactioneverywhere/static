@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Row, Col, Glyphicon, Button } from 'react-bootstrap';
+import { Row, Col, Button } from 'react-bootstrap';
 import { EventLink } from './utils/EventLink';
 import moment from 'moment';
 import _ from 'lodash';
@@ -19,13 +19,6 @@ function lessTextSummary(desc) {
   }
   return desc.slice(0, newlineIndex);
 }
-
-const IconText = ({ glyph, text }) => (
-  <span>
-    <Glyphicon glyph={glyph} style={{ marginRight: 8 }} />
-    {text}
-  </span>
-);
 
 class EventItem extends React.Component {
   constructor(props) {
@@ -50,12 +43,12 @@ class EventItem extends React.Component {
     let item = this.props.item;
 
     let actions = [
-      <IconText key="attending" glyph="check" text={item.attendingCount + " attending"}/>,
+      <li key="attending">{item.attendingCount + " attending"}</li>
     ];
 
     let location = this.findLocation(item.place);
     if (location) {
-      actions.push(<IconText key="location" glyph="check" text={location} />);
+      actions.push(<li key="location">{location}</li>);
     }
 
     return (
@@ -64,12 +57,12 @@ class EventItem extends React.Component {
           <Col md={4}>
             <div className="leftGutter">
               <div><EventLink analytics-type="picture" href={item.href}><img className="eventImg" alt="logo" src={item.avatar} /></EventLink></div>
-              <div><EventLink analytics-type="attend-button" href={item.href}><Button className="attendBtn" bsStyle="primary">Attend</Button></EventLink></div>
+              <div><EventLink analytics-type="attend-button" href={item.href}><button className="attendBtn">RSVP Here</button></EventLink></div>
             </div>
           </Col>
 
           <Col md={8}>
-            <div>
+            <div className="eventDate">
               {moment(item.startTime).format("dddd, MMMM D") + " at " +
                moment(item.startTime).format("h:mm A") + " - " +
                moment(item.endTime).format("h:mm A")}
@@ -81,7 +74,7 @@ class EventItem extends React.Component {
 
             <p className="eventDescription">{item.lessText}</p>
 
-            {actions}
+            <ul className="list-inline eventMisc">{actions}</ul>
 
           </Col>
         </Row>
@@ -97,13 +90,15 @@ class EventList extends React.Component {
 
   render() {
     if (this.props.isLoading) {
+      return null;
+    }
+    if (!this.props.eventList) {
       return (
         <div className="eventList">
-          Loading events
+          Could not load events
         </div>
       );
     }
-
     if (this.props.eventList.length === 0) {
       return (
         <div className="eventList">

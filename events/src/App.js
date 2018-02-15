@@ -28,10 +28,11 @@ class App extends React.Component {
   render() {
     return (
       <div className="container">
-        <h1 className="pageTitle">SF Bay Events</h1>
+        <h1 className="pageTitle">SF Bay Area Events</h1>
         <EventList
           eventList={this.state.items}
           isLoading={this.state.isLoading} />
+        <div>Find all of our events <a href="https://www.facebook.com/pg/directactioneverywheresf/events/">here</a>.</div>
       </div>
 
     )

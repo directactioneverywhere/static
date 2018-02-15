@@ -15,3 +15,6 @@ Then run `npm run start` to start the dev server.
 First, build the app by running `npm run build`. Then deploy it to
 dokku by following the steps in the README.md at the root of this
 repo.
+
+Once the new version is deployed, you need to cache bust it by adding
+"?<number>" to the script tag that imports the script on squarespace.

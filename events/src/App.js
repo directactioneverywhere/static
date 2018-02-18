@@ -29,10 +29,10 @@ class App extends React.Component {
   render() {
     return (
       <div className="container">
-        <h1 className="pageTitle">SF Bay Area Events</h1>
-        <p>
+        <h4 className="overTitle">
           Not in the Bay Area? Find your chapter <EventLink analytics-type="find-chapter" href="https://www.directactioneverywhere.com/get-active-main#find-a-chapter">here</EventLink>.
-        </p>
+        </h4>
+        <h1 className="pageTitle">SF Bay Area Events</h1>
         <EventList
           eventList={this.state.items}
           isLoading={this.state.isLoading} />

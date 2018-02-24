@@ -2,10 +2,13 @@ var path = require('path')
 var webpack = require('webpack')
 
 module.exports = {
-  entry: "./src/donate.js",
+  entry: {
+    donate: "./src/donate.js",
+    paypal: "./src/paypal.js",
+  },
   output: {
     path: path.join(__dirname, 'out'),
-    filename: "donate.js",
+    filename: "[name].js",
   },
   module: {
     rules: [

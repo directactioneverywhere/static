@@ -38,5 +38,6 @@ function logPaypalDonation() {
     eventAction: 'click',
     eventLabel: 'Once Checkout',
   });
+  fbq('track', 'DonateOnceCompleted');
 }
 logPaypalDonation();

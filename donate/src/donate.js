@@ -158,7 +158,7 @@ function monthlySubmitHandler(e) {
           window.fundraiser.setRecentDonor();
         }
         fbq('track', 'DonateMonthlyCompleted');
-        _paq.push(['trackEvent', 'Donate', 'Completed', 'Monthly', amount]);
+        _paq.push(['trackEvent', 'Donate', 'Donate Monthly Completed', 'Donate Monthly', amount]);
       }
     }
     ga('send', 'event', {
@@ -245,7 +245,7 @@ function onceSubmitHandler(e) {
           revenue: amount,
         });
         fbq('track', 'DonateOnceCompleted');
-        _paq.push(['trackEvent', 'Donate', 'Completed', 'Once', amount]);
+        _paq.push(['trackEvent', 'Donate', 'Donate Once Completed', 'Donate Once', amount]);
       }
     }
     ga('send', 'event', {

@@ -42,4 +42,8 @@ function logPaypalDonation() {
   fbq('track', 'DonateOnceCompleted');
   _paq.push(['trackEvent', 'Donate', 'Donate Once Completed', 'Donate Once', amount]);
 }
-logPaypalDonation();
+
+$(document).ready(function(){
+  logPaypalDonation();
+});
+

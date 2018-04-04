@@ -1,5 +1,6 @@
 var ga = window.ga || function() {};
 var fbq = window.fbq || function() {};
+var fbq = window._paq || function() {};
 
 ga("require", "ec");
 

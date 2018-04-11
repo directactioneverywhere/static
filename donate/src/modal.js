@@ -44,7 +44,7 @@ var HTML = `
           Becoming a monthly donor helps sustain our life saving work.
         </p>
         <p>
-          Would you like make a $<span id="donate-upgrade-amount"></span> monthly donation?
+          Would you like make a $<span id="donate-upgrade-amount"></span> monthly donation instead?
         </p>
       </div>
       <div class="modal-footer">

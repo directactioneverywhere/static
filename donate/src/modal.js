@@ -2,7 +2,7 @@ var ga = window.ga || function() {};
 
 var HTML = `
 <style>
-#upgrade-modal {
+#donate-upgrade-modal {
     z-index: 1000000;
 }
 #donate-upgrade-modal-header {

@@ -39,13 +39,12 @@ var HTML = `
 
       </div>
       <div class="modal-body">
-        <p>Thank you for choosing to donate to DxE&#39;s life saving work.</p>
+        <p>Thank you for choosing to donate to DxE!</p>
         <p>
-          For a limited time only, <strong>every new monthly donor</strong> (in any amount) earns DxE a <strong>bonus
-            $100 grant</strong> from our generous donor.
+          Becoming a monthly donor helps sustain our life saving work.
         </p>
         <p>
-          Would you like make a $<span id="donate-upgrade-amount"></span> monthly donation and earn DxE a <strong>bonus $100</strong>?
+          Would you like make a $<span id="donate-upgrade-amount"></span> monthly donation?
         </p>
       </div>
       <div class="modal-footer">

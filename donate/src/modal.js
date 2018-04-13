@@ -83,7 +83,7 @@ function init() {
     // that "$45" isn't highlighted.
     $('.js-amount').removeClass('active');
 
-    _paq.push(['trackEvent', 'Donate', 'Donation Upgraded to Monthly']);
+    _paq.push(['trackEvent', 'Donate', 'Donation Upgraded to Monthly','Donation Upgrade']);
 
     // Measure promo click.
     ga('ec:addPromo', {

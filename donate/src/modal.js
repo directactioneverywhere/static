@@ -60,7 +60,7 @@ export const donateUpgradeModalState = {
   monthlySelected: false,
 };
 
-export const modalEnabled = false;
+export const modalEnabled = true;
 
 
 function init() {

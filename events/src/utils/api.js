@@ -7,7 +7,7 @@ let productionServer = "https://mobile.dxetech.org";
 let server = (process.env.NODE_ENV === 'development') ? developmentServer : productionServer;
 
 export function getEvents() {
-  let dxeURL = server + "/events/fb-events";
+  let dxeURL = server + "/events";
   return fetch(dxeURL)
     .then((resp) => resp.json())
     .then(function (data) {

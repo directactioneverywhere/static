@@ -7,13 +7,19 @@ import _ from 'lodash';
 
 import './events.css';
 
+let meetupPrefix = "Every Saturday at 11am we have Meetups for everyone and anyone who cares about animals and making the world a better place! 🌍🐮🐷🐔🐭🦊🐠";
+
 // Picked arbitrarily by looking at summaries that were too short.
 var minimumSummaryLength = 80;
 
 // lessTextSummary takes an event description and returns a shorter
 // description that's easy to scan.
 function lessTextSummary(desc) {
-  // Trim desc it can't start with a newline.
+  desc = desc.trim();
+  if (desc.indexOf(meetupPrefix) === 0) {
+    desc = desc.slice(meetupPrefix.length);
+  }
+
   var lines = desc.trim().split('\n');
 
   var text = '';

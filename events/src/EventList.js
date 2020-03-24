@@ -8,6 +8,8 @@ import _ from 'lodash';
 import './events.css';
 
 let meetupPrefix = "Every Saturday at 11am we have Meetups for everyone and anyone who cares about animals and making the world a better place! 🌍🐮🐷🐔🐭🦊🐠";
+// this translates to https://directactioneverywhere.com/s/default_event_image.jpg in prod
+const defaultEventImage = "/s/default_event_image.jpg"
 
 // Picked arbitrarily by looking at summaries that were too short.
 var minimumSummaryLength = 80;
@@ -121,6 +123,11 @@ class EventList extends React.Component {
     for (let i = 0; i < this.props.eventList.length; i++) {
       let event = this.props.eventList[i];
 
+      let eventImage = defaultEventImage;
+      if (event.cover != null) {
+        eventImage = event.cover.source;
+      }
+
       events.push(<EventItem item={{
         title: event.name,
         startTime: event.start_time,
@@ -129,7 +136,7 @@ class EventList extends React.Component {
         description: event.description,
         lessText: lessTextSummary(event.description),
         href: `https://www.facebook.com/${event.id}`,
-        avatar: event.cover.source,
+        avatar: eventImage,
         place: event.place,
       }} key={i} />);
     }

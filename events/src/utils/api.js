@@ -15,6 +15,8 @@ export function getEvents() {
       let fbData = data.data;
       fbData = _.sortBy(fbData, function(o) {
         return new moment(o.start_date);
+      }).filter(function(o) {
+        return moment(o.start_time) >= moment();
       }).reverse();
 
       return fbData;

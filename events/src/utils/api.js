@@ -2,15 +2,12 @@ import moment from 'moment';
 
 let server = "https://adb.dxe.io";
 
-let developmentServer = "http://localhost:3333";
-let productionServer = "https://mobile.dxetech.org";
-
 export function getEvents() {
   let pageID = "1377014279263790";
 
-  // calculate start date (today) & end date (+30 days) in utc
-  let startTime = moment().utc().format("YYYY-MM-DD")
-  let endTime = moment().add(30,'days').utc().format("YYYY-MM-DD")
+  // calculate start date (events that are later today or started within last hour) & end date (+30 days) in utc
+  let startTime = moment().add(-1,'hours').utc().format("YYYY-MM-DD[T]HH:mm");
+  let endTime = moment().add(30,'days').utc().format("YYYY-MM-DD");
 
   let dxeURL = server + "/fb_events/" + pageID + "?start_time=" + startTime + "&end_time=" + endTime;
 

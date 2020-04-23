@@ -2,6 +2,9 @@ import moment from 'moment';
 
 let server = "https://adb.dxe.io";
 
+let developmentServer = "http://localhost:3333";
+let productionServer = "https://mobile.dxetech.org";
+
 export function getEvents() {
   let pageID = "1377014279263790";
 

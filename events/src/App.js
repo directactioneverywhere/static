@@ -30,6 +30,8 @@ class App extends React.Component {
           Not in the Bay Area? Find your chapter <EventLink href="https://www.directactioneverywhere.com/get-active-main#find-a-chapter">here</EventLink>.
         </h4>
         <h1 className="pageTitle">SF Bay Area Events</h1>
+        <h1 className="pageTitle">Upcoming Events</h1>
+        <h4 className="overTitle">We are currently holding all events online in response to COVID-19.</h4>
         <EventList
           eventList={this.state.items}
           isLoading={this.state.isLoading} />

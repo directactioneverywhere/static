@@ -1,5 +1,5 @@
 import React from 'react';
-import { getEvents, logHit }  from './utils/api';
+import { getEvents }  from './utils/api';
 import { EventLink } from './utils/EventLink';
 import './thirdparty/bootstrap/css/bootstrap.min.css';
 import EventList from './EventList';
@@ -21,22 +21,19 @@ class App extends React.Component {
           isLoading: false,
         })
       })
-
-    // Log a hit to indicate that the component has loaded.
-    logHit();
   }
 
   render() {
     return (
       <div className="container">
         <h4 className="overTitle">
-          Not in the Bay Area? Find your chapter <EventLink analytics-type="find-chapter" href="https://www.directactioneverywhere.com/get-active-main#find-a-chapter">here</EventLink>.
+          Not in the Bay Area? Find your chapter <EventLink href="https://www.directactioneverywhere.com/get-active-main#find-a-chapter">here</EventLink>.
         </h4>
         <h1 className="pageTitle">SF Bay Area Events</h1>
         <EventList
           eventList={this.state.items}
           isLoading={this.state.isLoading} />
-        <div>Find all of our events <EventLink analytics-type="all-events" href="https://www.facebook.com/pg/directactioneverywheresf/events/">here</EventLink>.</div>
+        <div>Find all of our events <EventLink href="https://www.facebook.com/pg/directactioneverywheresf/events/">here</EventLink>.</div>
       </div>
 
     )

@@ -1,58 +1,24 @@
-import _ from 'lodash';
 import moment from 'moment';
 
-let developmentServer = "http://localhost:3333";
-let productionServer = "https://mobile.dxetech.org";
-
-let server = (process.env.NODE_ENV === 'development') ? developmentServer : productionServer;
+let server = "https://adb.dxe.io";
 
 export function getEvents() {
-  let dxeURL = server + "/events";
+  let pageID = "1377014279263790";
+
+  // calculate start date (today) & end date (+30 days) in utc
+  let startTime = moment().utc().format("YYYY-MM-DD")
+  let endTime = moment().add(30,'days').utc().format("YYYY-MM-DD")
+
+  let dxeURL = server + "/fb_events/" + pageID + "?start_time=" + startTime + "&end_time=" + endTime;
+
+  console.log(dxeURL);
+
   return fetch(dxeURL)
     .then((resp) => resp.json())
     .then(function (data) {
-      // Sort by date.
-      let fbData = data.data;
-      fbData = _.sortBy(fbData, function(o) {
-        return new moment(o.start_date);
-      }).reverse();
-
-      return fbData;
+      return data;
     })
     .catch(function (error) {
       console.error("Could not get events", error);
     });
-}
-
-// Analytics API
-export function logHit() {
-  return fetch(server + '/a/web', {
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    method: 'POST',
-    body: JSON.stringify({
-      'type': 'hit',
-    })
-  }).catch(function (error) {
-    console.error("Could not log hit", error);
-  });
-}
-
-export function logClickLink(href, type) {
-  return fetch(server + '/a/web', {
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    method: 'POST',
-    body: JSON.stringify({
-      type: 'click-link',
-      data: {
-        href: href,
-        type: type,
-      },
-    }),
-  }).catch(function (error) {
-    console.error("Could not log click-link", error);
-  });
 }

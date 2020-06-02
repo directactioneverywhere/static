@@ -26,8 +26,10 @@ class App extends React.Component {
   render() {
     return (
       <div className="container">
-        <h1 className="pageTitle">Upcoming Events</h1>
-        <h4 className="overTitle">We are currently holding all events online in response to COVID-19.</h4>
+        <h1 className="pageTitle">Upcoming Events (Online & SF Bay)</h1>
+        <h4 className="overTitle">
+           Not in the Bay Area? Find your chapter <EventLink analytics-type="find-chapter" href="https://www.directactioneverywhere.com/get-active-main#find-a-chapter">here</EventLink>.
+        </h4>
         <EventList
           eventList={this.state.items}
           isLoading={this.state.isLoading} />
